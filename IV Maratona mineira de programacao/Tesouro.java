@@ -27,17 +27,33 @@ public class Tesouro{
     double areaTotal = lado*altura;
 
     if( ponto1.x == ponto2.x ){
+
       double pontoMedio = ( ponto1.y + ponto2.y )/2.0;
-      area1 = lado * pontoMedio;
-      area2 = lado * pontoMedio;
+
+      if( ponto1.y < ponto2.y ){
+        area1 = lado*pontoMedio;
+        area2 = (altura-pontoMedio) * lado;
+      }else{
+        area1 = (altura-pontoMedio) * lado;
+        area2 = lado*pontoMedio;
+      }
 
     }else if( ponto1.y == ponto2.y ){
       double pontoMedio = ( ponto1.x + ponto2.x )/2.0;
-      area1 = altura * pontoMedio;
-      area2 = altura * pontoMedio;
+
+      if( ponto1.x < ponto2.x ){
+        area1 = altura*pontoMedio;
+        area2 = (lado-pontoMedio) * altura;
+
+      }else{
+        area1 = (lado-pontoMedio) * altura;
+        area2 = altura*pontoMedio;
+      }
 
     }else{
+
       area1 = area2 = 0;
+
     }
 
     System.out.printf( "Area1: %f Area2: %f\n",area1,area2 );
